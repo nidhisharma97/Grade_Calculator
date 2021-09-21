@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade calculator</title>
+</head>
+<body>
+    <style>
+        body{
+            background-color: rgb(92, 59, 124);
+            font-size: 40px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 20px;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .container{
+            background-color: rgb(60, 27, 94);
+            color: wheat;
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+            margin: 80px 400px;
+            width: 500px;
+            height: 400px;
+            flex-direction: column;
+            box-shadow: 0px 0px 25px 5px rgba(0,0,0,0.6);
+            border-radius: 10px;
+        }
+        .app-form{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 10px;
+            border-radius: 10px;
+        }
+        .app-form-right{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 3rem;
+        }
+        .app-form-right >input{
+            margin-bottom: 1.25rem;
+            width: 200px;
+            padding: 5px 10px;
+            background-color: rgba(255, 255, 255, 0.116);
+            border: none;
+            outline: orchid;
+            color: white;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        .app-form-right >input::placeholder {
+            color: white;
+            font-weight: 500;
+            font-size: 18px;
+        }
+        .app-form-right .app-button {
+            width: 200px;
+            background-color: #fff;
+            color: rgb(60, 27, 94);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 20px;
+        }
+        .app-form-left >h2 {
+            font-size: 30px;
+            font-weight: 700;
+            border-left: 7px solid wheat;
+            padding-left: 8px;
+        }
+        .app-form-left:hover {
+            
+            opacity: 1;
+            transition: opacity 0.2s;
+        }
+        #showData{
+            font-size: 25px;
+            align-items: center;
+            color: white;
+            margin-top: -30px;
+        }
+
+         
+        
+    </style>
+    <div class="container">
+        <div class="app-form">
+            <div class="app-form-left">
+                <h2>
+                    Grade<br> Calculator
+                </h2>
+            </div>
+            <div class="app-form-right">
+                <input type="text" class="app" placeholder="WEB PROGRAMMING" id="wp">
+                <input type="text" class="app" placeholder="CSS 3" id="css">
+                <input type="text" class="app" placeholder="HTML" id="html">
+                <input type="text" class="app" placeholder="JAVASCRIPT" id="js">
+            
+                <input type="button" name="" value="Calculate Result" class="app-button" onclick="calci()">
+            </div>
+            
+        </div>
+        <div class="app-form-group showdata">
+            <p id="showData"></p>
+        </div>
+    </div>
+
+    
+<script src="sweetalert.min.js"></script>
+<script>
+const calci = () =>{
+    let wp = document.getElementById('wp').value;
+    let css = document.getElementById('css').value;
+    let html = document.getElementById('html').value;
+    let js = document.getElementById('js').value;
+    let grades ="";
+
+    let totalGrades = parseFloat(wp) + parseFloat(css) +parseFloat(html) +parseFloat(js) ;
+    alert(totalGrades);
+
+    let percentage = (totalGrades/400) * 100;
+    alert(percentage);
+
+    if(percentage <= 100 && percentage >= 80){
+        grades = "A";
+        swal("Good job!", "Your score is Good", "success");
+    }else if(percentage <= 79 && percentage >= 60){
+        grades = "B";
+    }else if(percentage <= 59 && percentage >= 40){
+        grades = "C";
+    }else {
+        grades = "F";
+    }
+
+    if(percentage >= 39.5){
+        document.getElementById('showData').innerHTML = ` Out of 400 your total is ${totalGrades} and percentage is ${percentage}%. <br> Your grade is ${grades}.You are Pass.`
+    }
+    else {
+        document.getElementById('showData').innerHTML = ` Out of 400 your total is ${totalGrades} and percentage is ${percentage}%. <br> Your grade is ${grades}.You are Fail.`
+        
+
+    }
+
+   
+
+}
+</script>    
+</body>
+</html>
